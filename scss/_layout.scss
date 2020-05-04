@@ -1,0 +1,81 @@
+// _layout.scss
+// Desktop first design
+
+body {
+  // remove
+  background: $light-blue;
+}
+
+main {
+  // height: hero: 120px, nav: 60px, footer: 140px 
+  min-height: calc(100vh - 320px);
+}
+
+.page-wrapper {
+  // Compensates for hero height
+  margin: 180px auto 0; 
+  max-width: 1200px;
+
+  // remove
+  background: #fff;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+section {
+  flex: 2;
+  padding: 0 20px;
+  
+  // remove
+  background: $light-green;
+}
+
+aside {
+  background: $light-red;
+  flex: 1;
+  padding: 0 20px;  
+}
+
+footer {
+  height: 140px;
+  padding: 20px 20px 30px 20px;
+  text-align: center;
+  
+  // remove
+  background: $light-yellow;
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1199px) {
+  main {
+    min-height: calc(100vh - 300px);
+  }
+  .page-wrapper {
+    // Compensates for change in header hero height
+    margin: 160px auto 0; 
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  main {
+    min-height: calc(100vh - 300px);
+  }
+
+  .page-wrapper {
+    // Compensates for change in header hero height
+    margin: 80px auto 0; 
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer {
+    height: 180px;
+  }
+}

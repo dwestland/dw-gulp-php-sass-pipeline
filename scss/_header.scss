@@ -1,0 +1,279 @@
+// _nav.scss
+/* Desktop first design */
+
+$navbar-nav: #204075;
+$navbar-logo-color: #c7d9f7;
+$navbar-bg-ul: #204075;
+$navbar-bg-li-hover: #547dbe;
+$navbar-a: #ffffff;
+$navbar-drop-down-a: #ffffff;
+$navbar-ul-ul: #3b5c91;
+$navbar-ul-ul-ul: #3164B5;
+$navbar-hamburger-color: #ffffff;
+
+header {
+  max-width: 1200px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  
+  .hero {
+    background: url("/images/santa-monica-pier-header.jpg")no-repeat center center;
+    height: 120px;
+    width: 100%;
+  }
+}
+
+nav {
+  background-color: $navbar-nav;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+  height: 66px;
+  transition-duration: 0.3s;
+  width: 100%;
+}
+
+.navbar {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  height: 100%;
+  margin: auto;
+
+  a {
+    color: $navbar-a;
+  }
+
+  ul {
+    background-color: $navbar-bg-ul;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  li {
+    float: left;
+    overflow-y: auto;
+  }
+
+  li a {
+    display: block;
+    font-weight: 600;
+    padding: 20px 30px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: $navbar-bg-li-hover;
+    transition-duration: 0.3s;
+    position: relative;
+  }
+
+  .logo {
+    color: $navbar-logo-color;
+    display: block;
+    float: left;
+    font-size: 2em;
+    letter-spacing: -0.08rem;
+    padding: 10px 20px;
+    text-decoration: none;
+  }
+
+  .menu {
+    clear: none;
+    float: left;
+    max-height: none;
+  }
+
+  /* Drop-down text */
+  ul ul a {
+    color: $navbar-drop-down-a;
+  }
+
+  /* Triggers drop-down */
+  ul li:hover > ul {
+    display:inherit;
+  }
+
+  ul ul {
+    background: $navbar-ul-ul;
+    display: none;
+    position: absolute;
+    width: 170px;
+  }
+
+  /* First Tier Drop-down */
+  ul ul li {
+    float: none;
+  }
+
+  ul ul ul {
+    background: $navbar-ul-ul-ul;
+    left: 170px;
+    margin-top: -66px;
+  }
+
+  /* Arrow icon pointing down */
+  li > a:after {
+    content:  ' \25be';
+    font-size: 1.4em;
+    margin-left: 3px;
+  }
+
+  /* Arrow icon pointing right */
+  ul ul li > a:after {
+    content:  ' \25b8';
+    font-size: 1.4em;
+    margin-left: 3px;
+  }
+
+  li > a:only-child:after {
+    content: '';
+  }
+
+  .menu-btn {
+    display: none;
+  }
+}
+
+/* Tablet menu */
+@media (min-width: 601px) and (max-width: 1199px) {
+  header {
+    .hero {
+      height: 100px;
+    }
+  }
+}
+
+/* Mobile menu */
+@media (max-width: 600px) {
+  header {
+    .hero {
+      height: 80px;
+    }
+  }
+
+  nav {
+    top: calc(100% - 58px);
+    bottom: 0;
+    position: fixed;
+  }
+
+  .navbar {
+
+    .logo {
+      float: right;
+    }
+
+    ul {
+      display: none;
+    }
+    
+    ul ul {
+      bottom: 0;
+      left: 33vw;
+      width: 33vw;
+    }
+
+    ul ul ul {
+      left: 33vw;
+      width: 34vw;
+    }
+
+    li {
+      float: none;
+    }
+
+    /* Triggers drop-down */
+    ul li:hover > ul {
+      display:inherit;
+      overflow: initial;
+    }
+
+    li a {
+      padding: 20px 20px;
+    }
+
+    /* Arrow icon pointing right */
+    li > a:after {
+      content:  ' \25b8';
+      font-size: 1.4em;
+      margin-left: 3px;
+    }
+
+    .menu {
+      bottom: 58px;
+      clear: both;
+      float: left;
+      max-height: 0;
+      overflow: visible;
+      position: absolute;
+      width: 33vw;
+    }
+
+    /* menu btn */
+    .menu-btn {
+      &:checked ~ ul {
+        display: block;
+      }
+      &:checked ~ .menu {
+        max-height: 240px;
+      }
+      &:checked ~ .menu-icon .navicon {
+        background: transparent;
+      }
+      &:checked ~ .menu-icon .navicon:before {
+        transform: rotate(-45deg);
+      }
+      &:checked ~ .menu-icon .navicon:after {
+        transform: rotate(45deg);
+      }
+      &:checked ~ .menu-icon:not(.steps) .navicon:before,
+      &:checked ~ .menu-icon:not(.steps) .navicon:after {
+        top: 0;
+      }
+    }
+
+    /* menu icon */
+    .menu-icon {
+      cursor: pointer;
+      display: inline-block;
+      padding: 28px 20px;
+      position: relative;
+      user-select: none;
+
+      .navicon {
+        background: $navbar-hamburger-color;
+        background: $navbar-hamburger-color;
+        display: block;
+        height: 2px;
+        position: relative;
+        transition: background .2s ease-out;
+        width: 18px;
+      }
+
+      .navicon:before,
+      .navicon:after {
+        background: $navbar-hamburger-color;
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all .3s ease-out;
+        width: 100%;
+      }
+
+      .navicon:before {
+        top: 5px;
+      }
+
+      .navicon:after {
+        top: -5px;
+      }
+    }
+  }
+
+  main {
+    margin-bottom: 60px;
+    padding-top: 0;
+  }
+}
