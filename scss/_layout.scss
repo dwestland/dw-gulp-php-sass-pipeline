@@ -3,17 +3,17 @@
 
 body {
   // remove
-  background: $light-blue;
+  // background: $light-blue;
 }
 
 main {
   // height: hero: 120px, nav: 60px, footer: 140px 
-  min-height: calc(100vh - 320px);
+  min-height: calc(100vh - 242px);
 }
 
 .page-wrapper {
   // Compensates for hero height
-  margin: 180px auto 0; 
+  margin: 102px auto 0; 
   max-width: 1200px;
 
   // remove
@@ -51,11 +51,10 @@ footer {
 /* Tablet */
 @media (min-width: 601px) and (max-width: 1199px) {
   main {
-    min-height: calc(100vh - 300px);
+    // min-height: calc(100vh - 300px);
   }
   .page-wrapper {
-    // Compensates for change in header hero height
-    margin: 160px auto 0; 
+    // margin: 160px auto 0; 
   }
 }
 
@@ -67,7 +66,7 @@ footer {
 
   .page-wrapper {
     // Compensates for change in header hero height
-    margin: 80px auto 0; 
+    margin: 64px auto 0; 
   }
 
   .content-wrapper {

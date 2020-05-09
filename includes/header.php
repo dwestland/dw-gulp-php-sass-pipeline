@@ -1,10 +1,9 @@
 <header class="main-header">
   <div class="hero">
-    <span class="hero-title">Westland.net</span>
+    <span class="hero-title"><a href="/">Westland.net</a></span>
   </div>
   <nav>
     <div class="navbar">
-      <a href="#" class="logo">Westland.net</a>
       <input class="menu-btn" type="checkbox" id="menu-btn" />
       <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
       <ul class="menu">
