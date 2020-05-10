@@ -1,16 +1,6 @@
 // _nav.scss
 /* Desktop first design */
 
-// $navbar-nav: #204075;
-// $navbar-logo-color: #c7d9f7;
-// $navbar-bg-ul: #204075;
-// $navbar-bg-li-hover: #547dbe;
-// $navbar-a: #ffffff;
-// $navbar-drop-down-a: #ffffff;
-// $navbar-ul-ul: #3b5c91;
-// $navbar-ul-ul-ul: #3164B5;
-// $navbar-hamburger-color: #ffffff;
-
 .main-header {
   background: #ffffff;
   max-width: 1200px;
@@ -23,329 +13,278 @@
   }
 
   .hero {
-    // background: url("/images/santa-monica-pier-header.jpg")no-repeat center center;
-    
+    align-items: center;
+    display: flex;
+    height: 64px;
+    justify-content: center;
+
     a {
-      align-items: center;
-      // color: $text-color;
-      display: flex;
       font-family: 'Zilla Slab', serif;
       font-size: 52px;
-      height: 64px;
-      justify-content: center;
       margin: 0;
       text-decoration: none;
       width: 100%;
-    }
-
-    a:hover {
-      color: $text-color;
     }
   }
 }
 
 nav {
-  // background-color: #fff;
   background-color: #fff;
   border-bottom: 3px solid $text-color;
   border-top: 3px solid $text-color;
-
-  box-shadow: 0 8px 6px -6px rgb(165, 165, 165);
-
-  // box-shadow: 0 4px 2px -2px gray;
-
-  // box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
-
+  box-shadow: 0 8px 6px -6px $light-gray;
   height: 38px;
   transition-duration: 0.3s;
   width: 100%;
 
-}
-
-.navbar {
-  align-items: center; 
-  display: flex;
-  font-family: 'Zilla Slab', serif;
-  font-size: 26px;
-  height: 100%;
-  justify-content: center;
-  margin: auto;
-
-  a {
-    // color: text-color;
-  }
-
-  ul {
-    font-family: 'Zilla Slab', serif;
-
-    background-color: #ffffff;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: relative;
-  }
-
-  li {
-    float: left;
-    overflow-y: auto;
-  }
-
-  li a {
-    display: block;
-    font-weight: 600;
-    padding: 0px 30px;
-    text-decoration: none;
-
-    display: flex;
-    // flex-direction: row;
-    align-items: center;
-  }
-
-  li a:hover {
-    // background-color: $navbar-bg-li-hover;
-    // transition-duration: 0.3s;
-    position: relative;
-
-    text-shadow: 0 0 3px #88b1fd;
-    transition-duration: .3s;
-
-
-
-  }
-
-  // .logo {
-  //   color: $navbar-logo-color;
-  //   display: block;
-  //   float: left;
-  //   font-size: 2em;
-  //   letter-spacing: -0.08rem;
-  //   padding: 10px 20px;
-  //   text-decoration: none;
-  // }
-
-  .menu {
-    clear: none;
-    float: left;
-    max-height: none;
-  }
-
-  /* Drop-down text */
-  ul ul a {
-    // color: $navbar-drop-down-a;
-    height: 60px;
-  }
-
-  /* Triggers drop-down */
-  ul li:hover > ul {
-    display:inherit;
-  }
-
-  ul ul {
-    // background: $navbar-ul-ul;
-    display: none;
-    position: absolute;
-    width: 220px;
-
-
-    border: 1px solid $text-color;
-  }
-
-  /* First Tier Drop-down */
-  ul ul li {
-    float: none;
-  }
-
-  ul ul ul {
-    // background: $navbar-ul-ul-ul;
-    left: 170px;
-    margin-top: -66px;
-  }
-
-  /* Arrow icon pointing down */
-  li > a:after {
-    content:  ' \25bd';
-    font-size: .7em;
-    margin-bottom: -4px;
-    margin-left: 3px;
-  }
-
-  /* Arrow icon pointing right */
-  ul ul li > a:after {
-    content:  ' \25b7';
-    font-size: .7em;
-    margin-bottom: -4px;
-    margin-left: 3px;
-  }
-
-  li > a:only-child:after {
-    content: '';
-  }
-
-  .menu-btn {
-    display: none;
-  }
-}
-
-/* Tablet menu */
-@media (min-width: 601px) and (max-width: 1199px) {
-  .main-header {
-    .hero {
-      a {
-        font-size: 46px;
-      }
-
-    }
-  }
-}
-
-/* Mobile menu */
-@media (max-width: 600px) {
-  .main-header {
-    .hero {
-      border-bottom: 3px solid $text-color;
-      height: 64px;
-    }
-
-    .hero-title {
-      a {
-        font-size: 42px;
-      }
-    }
-  }
-
-  nav {
-    top: calc(100% - 53px);
-    bottom: 0;
-    position: fixed;
-    height: 56px;
-  }
-
   .navbar {
-    justify-content: left;
-    // .logo {
-    //   float: right;
-    // }
+    align-items: center; 
+    display: flex;
+    font-family: 'Zilla Slab', serif;
+    font-size: 26px;
+    height: 100%;
+    justify-content: center;
+    margin: auto;
 
     ul {
-      border-right: 1px solid $text-color;
-      border-top: 1px solid $text-color;
-      // border: 1px solid $text-color;
-      display: none;
-      
-    }
-    
-    ul ul {
-      bottom: 0;
-      left: 180px;
-      width: 192px;
-
-
-      bottom: -1px;
-    left: 180px;
-    width: calc(100vw - 180px);
-    }
-
-    ul ul ul {
-      left: 33vw;
-      width: 34vw;
+      background-color: #ffffff;
+      font-family: 'Zilla Slab', serif;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
     }
 
     li {
-      float: none;
+      float: left;
+      overflow-y: auto;
+    }
+
+    li a {
+      align-items: center;
+      display: block;
+      display: flex;
+      font-weight: 600;
+      padding: 0px 30px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      position: relative;
+      text-shadow: 0 0 3px #88b1fd;
+      transition-duration: .3s;
+    }
+
+    .menu {
+      clear: none;
+      float: left;
+      max-height: none;
+    }
+
+    /* Drop-down text */
+    ul ul a {
+      height: 60px;
     }
 
     /* Triggers drop-down */
     ul li:hover > ul {
       display:inherit;
-      overflow: initial;
     }
 
-    li a {
-      padding: 20px 20px;
+    ul ul {
+      border: 1px solid $text-color;
+      display: none;
+      position: absolute;
+      width: 220px;
+    }
+
+    /* First Tier Drop-down */
+    ul ul li {
+      border-bottom: 1px solid $lighter-gray;
+      float: none;
+    }
+
+    ul ul li:last-child {
+      border-bottom: none;
+    }
+
+    ul ul ul {
+      left: 170px;
+      margin-top: -66px;
+    }
+
+    /* Arrow icon pointing down */
+    li > a:after {
+      content:  ' \25bd';
+      font-size: .7em;
+      margin-bottom: -4px;
+      margin-left: 3px;
     }
 
     /* Arrow icon pointing right */
-    li > a:after {
+    ul ul li > a:after {
       content:  ' \25b7';
       font-size: .7em;
       margin-bottom: -4px;
       margin-left: 3px;
     }
 
-    .menu {
-      bottom: 52px;
-      // clear: both;
-      // float: left;
-      // max-height: 0;
-      overflow: visible;
-      position: absolute;
-      width: 182px;
+    li > a:only-child:after {
+      content: '';
     }
 
-    /* menu btn */
     .menu-btn {
-      &:checked ~ ul {
-        display: block;
-      }
-      &:checked ~ .menu {
-        max-height: 240px;
-      }
-      &:checked ~ .menu-icon .navicon {
-        background: transparent;
-      }
-      &:checked ~ .menu-icon .navicon:before {
-        transform: rotate(-45deg);
-      }
-      &:checked ~ .menu-icon .navicon:after {
-        transform: rotate(45deg);
-      }
-      &:checked ~ .menu-icon:not(.steps) .navicon:before,
-      &:checked ~ .menu-icon:not(.steps) .navicon:after {
-        top: 0;
-      }
+      display: none;
     }
+  }
+}
 
-    /* menu icon */
-    .menu-icon {
-      cursor: pointer;
-      display: inline-block;
-      padding: 28px 20px;
-      position: relative;
-      user-select: none;
+/* Tablet menu */
+@media (min-width: 601px) and (max-width: 1199px) {
 
-      .navicon {
-        background: $text-color;
-        background: $text-color;
-        display: block;
-        height: 2px;
-        position: relative;
-        transition: background .2s ease-out;
-        width: 18px;
-      }
-
-      .navicon:before,
-      .navicon:after {
-        background: $text-color;
-        content: '';
-        display: block;
-        height: 100%;
-        position: absolute;
-        transition: all .3s ease-out;
-        width: 100%;
-      }
-
-      .navicon:before {
-        top: 5px;
-      }
-
-      .navicon:after {
-        top: -5px;
+  .main-header {
+    .hero {
+      a {
+        font-size: 46px;
       }
     }
   }
+}
 
-  main {
-    margin-bottom: 60px;
-    padding-top: 0;
+/* Mobile menu */
+@media (max-width: 600px) {
+
+  .main-header {
+    .hero {
+      border-bottom: 3px solid $text-color;
+      height: 64px;
+
+      .hero-title {
+        a {
+          font-size: 42px;
+        }
+      }
+    }
+
+    nav {
+      top: calc(100% - 53px);
+      bottom: 0;
+      position: fixed;
+      height: 56px;
+    }
+
+    .navbar {
+      justify-content: left;
+
+      ul {
+        border-right: 1px solid $text-color;
+        border-top: 1px solid $text-color;
+        display: none;
+      }
+
+      ul ul {
+        bottom: -1px;
+        left: 180px;
+        width: calc(100vw - 180px);
+      }
+
+      ul ul a {
+        padding: 34px 20px;
+      }
+
+      ul ul ul {
+        left: 33vw;
+        width: 34vw;
+      }
+
+      li {
+        float: none;
+      }
+
+      ul li:hover > ul {
+        display:inherit;
+        overflow: initial;
+      }
+
+      li a {
+        padding: 20px 20px;
+      }
+
+      /* Arrow icon pointing right */
+      li > a:after {
+        content:  ' \25b7';
+        font-size: .7em;
+        margin-bottom: -4px;
+        margin-left: 3px;
+      }
+
+      .menu {
+        bottom: 52px;
+        overflow: visible;
+        position: absolute;
+        width: 182px;
+      }
+
+      /* menu btn */
+      .menu-btn {
+        &:checked ~ ul {
+          display: block;
+        }
+        &:checked ~ .menu {
+          max-height: 240px;
+        }
+        &:checked ~ .menu-icon .navicon {
+          background: transparent;
+        }
+        &:checked ~ .menu-icon .navicon:before {
+          transform: rotate(-45deg);
+        }
+        &:checked ~ .menu-icon .navicon:after {
+          transform: rotate(45deg);
+        }
+        &:checked ~ .menu-icon:not(.steps) .navicon:before,
+        &:checked ~ .menu-icon:not(.steps) .navicon:after {
+          top: 0;
+        }
+      }
+
+      /* menu icon */
+      .menu-icon {
+        cursor: pointer;
+        display: inline-block;
+        padding: 28px 20px;
+        position: relative;
+        user-select: none;
+
+        .navicon {
+          background: $text-color;
+          background: $text-color;
+          display: block;
+          height: 2px;
+          position: relative;
+          transition: background .2s ease-out;
+          width: 18px;
+        }
+
+        .navicon:before,
+        .navicon:after {
+          background: $text-color;
+          content: '';
+          display: block;
+          height: 100%;
+          position: absolute;
+          transition: all .3s ease-out;
+          width: 100%;
+        }
+
+        .navicon:before {
+          top: 5px;
+        }
+
+        .navicon:after {
+          top: -5px;
+        }
+      }
+    }
   }
 }

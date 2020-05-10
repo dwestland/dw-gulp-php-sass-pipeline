@@ -2,12 +2,10 @@
 // Desktop first design
 
 body {
-  // remove
-  // background: $light-blue;
+
 }
 
 main {
-  // height: hero: 120px, nav: 60px, footer: 140px 
   min-height: calc(100vh - 242px);
 }
 
@@ -15,9 +13,6 @@ main {
   // Compensates for hero height
   margin: 102px auto 0; 
   max-width: 1200px;
-
-  // remove
-  background: #fff;
 }
 
 .content-wrapper {
@@ -34,9 +29,11 @@ section {
 }
 
 aside {
-  background: $light-red;
   flex: 1;
-  padding: 0 20px;  
+  padding: 0 20px;
+
+  // remove
+  background: $light-red;
 }
 
 footer {
@@ -51,17 +48,21 @@ footer {
 /* Tablet */
 @media (min-width: 601px) and (max-width: 1199px) {
   main {
-    // min-height: calc(100vh - 300px);
+    
   }
+
   .page-wrapper {
-    // margin: 160px auto 0; 
+
   }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
+  
   main {
+    margin-bottom: 60px;
     min-height: calc(100vh - 300px);
+    padding-top: 0;
   }
 
   .page-wrapper {

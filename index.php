@@ -28,7 +28,6 @@
 
     <div>
       Ad goes here
-      <!-- <img src="/public/images/santa-monica-pier-header.jpg"> -->
     </div>
 
     <article class="content-wrapper">

@@ -8,15 +8,15 @@
       <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
       <ul class="menu">
         <li><a href="/realestate/">Real Estate</a></li>
-        <li><a href="#articles">Live Cams</a>
+        <li><a href="#">Live Cams</a>
           <ul>
             <li><a href="/beachcam/">Beach Cam</a></li>
-            <li><a href="/peircam/">Pier Cam</a></li>
-            <li><a href="#">Oahu Cams</a></li>
-            <li><a href="#">Miami Cams</a></li>
+            <li><a href="/piercam/">Pier Cam</a></li>
+            <li><a href="https://www.mybeachcams.com/hawaii/oahu/">Oahu Cams</a></li>
+            <li><a href="https://www.mybeachcams.com/florida/miami/">Miami Cams</a></li>
           </ul>
         </li>
-        <li class="test"><a href="#contact">Contact</a></li>
+        <li><a href="/contact/">Contact</a></li>
       </ul>
     </div>
   </nav>
