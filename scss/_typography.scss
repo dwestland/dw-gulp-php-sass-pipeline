@@ -50,6 +50,10 @@ h6 {
 	letter-spacing: 0;
 }
 
+p {
+  line-height: 1.5;
+}
+
 a {
   color: $blue;
 }
@@ -87,4 +91,8 @@ code {
 
 .fine-print {
   font-size: .8em;
+}
+
+.bigger-text {
+  font-size: 1.4em;
 }

@@ -11,6 +11,7 @@ main {
 
 .page-wrapper {
   // Compensates for hero height
+  background: #ffffff;
   margin: 102px auto 0; 
   max-width: 1200px;
 }
@@ -21,44 +22,82 @@ main {
 }
 
 section {
-  flex: 2;
+  flex: 3;
   padding: 0 20px;
-  
-  // remove
-  background: $light-green;
 }
 
 aside {
   flex: 1;
   padding: 0 20px;
-
-  // remove
-  background: $light-red;
 }
 
 footer {
-  height: 140px;
-  padding: 20px 20px 30px 20px;
+  margin: 0;
+  padding: 20px;
   text-align: center;
-  
-  // remove
-  background: $light-yellow;
+
+  ul {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    padding: 20px;
+  }
+
+  li a {
+    text-decoration: none;
+  }
+
+  li a:hover {
+    text-decoration: underline;
+  }
 }
+
+.video-link {
+  display: inline-block;
+  margin: 5% 10% 1%;
+  opacity: .85;
+  position: relative;
+  position: relative;
+}
+
+.play {
+  background: url(/images/play-button.png) center center no-repeat;
+  height: 70px;
+  left: 50%;
+  margin: -35px 0 0 -35px;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  width: 70px;
+  z-index: 1;
+}
+
+
 
 /* Tablet */
 @media (min-width: 601px) and (max-width: 1199px) {
-  main {
-    
+  body {
+    background-image: none;
+    background-color: #ffffff;
   }
 
-  .page-wrapper {
-
+  section {
+    flex: 2;
   }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
-  
+  body {
+    background-image: none;
+    background-color: #ffffff;
+  }
+
   main {
     margin-bottom: 60px;
     min-height: calc(100vh - 300px);
@@ -76,6 +115,6 @@ footer {
   }
 
   footer {
-    height: 180px;
+    margin-bottom: 40px;
   }
 }

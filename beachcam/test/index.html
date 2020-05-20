@@ -1,0 +1,243 @@
+
+
+
+<script type="text/javascript" src="https://live1.brownrice.com/node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://live1.brownrice.com/node_modules/video.js/dist/video.min.js"></script>
+<script type="text/javascript" src="https://live1.brownrice.com/node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.min.js"></script>
+<script type="text/javascript" src="https://live1.brownrice.com/node_modules/videojs-overlay/dist/videojs-overlay.min.js"></script>
+<script type="text/javascript" src="https://live1.brownrice.com/node_modules/videojs-playlist/dist/videojs-playlist.min.js"></script>
+<script type="text/javascript" src="https://live1.brownrice.com/node_modules/videojs-chromecast/dist/videojs-chromecast.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+
+
+<link href='https://live1.brownrice.com/node_modules/video.js/dist/video-js.min.css' rel='stylesheet' type='text/css'> 
+<link href='https://live1.brownrice.com/node_modules/videojs-overlay/dist/videojs-overlay.css' rel='stylesheet' type='text/css'>
+<link href='https://live1.brownrice.com/node_modules/videojs-chromecast/dist/videojs-chromecast.css' rel='stylesheet' type='text/css'>
+
+<style>
+body {
+	margin: 0px;
+}
+.caption {
+	font-size: 3em;
+	text-align: left !important;
+	width: auto !important;
+	left: 1.5em !important;
+	bottom: 1.5em !important;
+}
+
+
+</style>
+
+<script type="text/javascript">
+
+$(document).ready(function($) {
+
+	// initialize player
+	var player = videojs(video_ba8c3bffd96381dc2c6b, {
+		chromecast: {
+			appId: video_ba8c3bffd96381dc2c6b		}
+	});
+
+	if (false) {  // playlists
+
+	    var captions = null;
+    	player.playlist([]);  // Load the playlist items.
+
+    	var items = player.playlist();
+    	var playDuration = 0;
+
+        player.playlist.repeat(false);  // Enable/disable auto-repeat.
+
+    	player.playlist.autoadvance(0);  // No delay between streams.
+
+        player.on('playlistitem', function() {  // Whenever the current playlist item changes, grab the duration that we should play.
+        	playDuration = items[player.playlist.currentItem()].duration ? items[player.playlist.currentItem()].duration : 0;
+
+        	if (captions[player.playlist.currentItem()] != "") {
+        	    player.overlay({
+        	        overlays: [{
+        		        class: "caption",
+        	        	align: "bottom-left",
+        	        	content: captions[player.playlist.currentItem()],
+        	        	start: "playing",
+        	        	end: "stopped"
+        	        }]
+        	    });
+        	} else {
+        	    player.overlay({
+        	        overlays: []
+        	    });
+            }
+      	});
+
+        resizePlayer();
+        function resizePlayer() {
+    		if (false) {
+      			if (items[player.playlist.currentItem()].type == "audio") {
+                                /* If this is Hutton's player, the contnr_covard image will exist. We need to hide it when a video is playing, and show it when it's only audio. */
+                                if(document.getElementById('contnr_covart')){
+                                    /* Show cover art jpg if stream type is audio and element contnr_covart exists. Will only exist if Hutton player. */
+                                    document.getElementById('contnr_covart').style.display='block';
+                                    /* Always disable the caption overlay for Hutton player */
+                                    player.overlay({
+                                        overlays: []
+                                    });
+
+                                }
+    				$("#video_ba8c3bffd96381dc2c6b").animate({"padding-top": "30px"}, 200);
+    				player.options().inactivityTimeout = 0;
+    				player.reportUserActivity(true);  // this forces the inactivityTimeout to update
+          		} else {
+                                if(document.getElementById('contnr_covart')){
+                                    document.getElementById('contnr_covart').style.display='none';
+                                    player.overlay({
+                                        overlays: []
+                                    });
+                                }
+    				$("#video_ba8c3bffd96381dc2c6b").animate({"padding-top": "56.25%"}, 200);
+    				player.options().inactivityTimeout = 2000;
+    				player.reportUserActivity(true);  // this forces the inactivityTimeout to update
+              	}
+    		}
+        }
+
+		player.on('loadedmetadata', function() {
+
+			resizePlayer();
+
+            // Check if we should go to the next playlist item every second.
+      		if (playDuration > 0) {
+
+            	playDuration += player.currentTime();  // the current time does not always start at zero
+
+          		var check = setInterval(function() {
+              		if (player.currentTime() > playDuration) {
+                  		if (player.playlist.next() == undefined) {  // move to the next item in the playlist and see if we should stop the player
+							player.pause();  // stop the player
+							player.playlist.currentItem(0);  // move back to the first item
+                        }
+
+                        clearInterval(check);
+              		}
+                }, 1000);
+          	}
+		});
+
+	} else {  // non-playlist
+
+		// overlay
+	    $(".vjs-overlay").css("max-width", "300px");
+	    $(".vjs-overlay").css("max-height", "300px");
+	    $(".vjs-overlay img").css("max-width", "300px");
+	    $(".vjs-overlay img").css("max-height", "300px");
+
+	    player.overlay({
+	        overlays: [
+	        	        	{
+					align: "top-right",
+					content: "<a href=''><img id='logo_1_ba8c3bffd96381dc2c6b' src='https://live1.brownrice.com/images/bri_logo_icon.png'></a>",
+					start: 'play',
+					end: 'stop',
+					showBackground: false
+				},
+	       		       		        ]
+		});
+
+	    // timeout
+	    if (0 != 0) {
+
+	    	var timeout;
+
+	    	player.on('play', function() {
+	    		timeout = player.currentTime() + 0;
+	    	});
+
+	    	player.on('timeupdate', function(e) {
+				if (player.currentTime() >= timeout) {
+	                player.pause();
+	            }
+	        });
+	    }
+
+        // camera controls
+		if (true) {
+
+			// add controls under player
+			$("#cam_embed_ba8c3bffd96381dc2c6b").append("<div id='control-container-cam_embed_ba8c3bffd96381dc2c6b' />");
+
+			// read cookie function
+			function getCookie(w) {
+				cName = "";
+				pCOOKIES = new Array();
+				pCOOKIES = document.cookie.split('; ');
+				for(bb = 0; bb < pCOOKIES.length; bb++){
+					NmeVal  = new Array();
+					NmeVal  = pCOOKIES[bb].split('=');
+					if(NmeVal[0] == w){
+						cName = unescape(NmeVal[1]);
+					}
+				}
+				return cName;
+			}
+
+            // set cookie function
+            function setCookie() {
+				var text = "";
+				var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+				for( var i=0; i < 8; i++ ) {
+	            	text += possible.charAt(Math.floor(Math.random() * possible.length));
+				}
+
+	            // set the cookie name and cookie value
+	            document.cookie="cameracookie=" + text;
+
+	            // and set the var to pass to our next script since the cookie just got set
+	            return text;
+            }
+
+           // get the cookie if exists
+           var cameracookie = getCookie('cameracookie');
+
+           // set it if it does not exist
+           if (cameracookie === '') {
+        	   cameracookie = setCookie();
+           }
+
+           // location of bri camera control server-side script
+           var control_script = "https://live1.brownrice.com/cam-control/camera-controller.php?camera=&myDiv=cam_embed_ba8c3bffd96381dc2c6b&myLogo2=&camerasession=" + cameracookie;
+
+           if (false) {
+
+				// load the cam control script
+				$.getScript(control_script, function() {});
+
+				// show the controls
+				$("#control-container-cam_embed_ba8c3bffd96381dc2c6b").show('slow');
+				$("#left-cam_embed_ba8c3bffd96381dc2c6b").hide('slow');
+				$("#right-cam_embedba8c3bffd96381dc2c6b").hide('slow');
+				$("#top-cam_embedba8c3bffd96381dc2c6b").hide('slow');
+			}
+        }
+
+	    // add the video source
+	    player.src({type: "application/x-mpegURL", src: "https://590804fbbbc47.streamlock.net:444/vod/mp4:content/timelapses/westland/2020-05-17.mp4/playlist.m3u8"});
+	}
+
+	// autostart (applies to both playlists and non-playlists)
+	if (true) {
+		player.play();
+	}
+
+    // enable chromecast
+    $("head").append("<head data-cast-api-enabled='true'></head>").hide().show(0);
+});
+</script>
+
+<div id='cam_embed_ba8c3bffd96381dc2c6b'>
+	<video id='video_ba8c3bffd96381dc2c6b' class='video-js vjs-default-skin vjs-big-play-centered vjs-16-9' controls preload='auto' poster='https://live1.brownrice.com/thumbnails/timelapses/401758-800.png' webkit-playsinline='true' playsinline='true'></video>
+</div>
+
+
+// https://live1.brownrice.com/player/timelapse/latest/westland

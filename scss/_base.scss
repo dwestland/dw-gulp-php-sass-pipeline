@@ -5,3 +5,17 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+hr {
+  margin: 10px 40px;
+}
+
+.cam-container {
+  margin-right: auto;
+  margin-left: auto; 
+}
